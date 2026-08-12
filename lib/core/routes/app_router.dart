@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 
 import '../../features/complete_profile/view/complete_profile_page.dart';
+import '../../features/dashboard/view/dashboard_page.dart';
 import '../../features/onboarding/view/onboarding_page.dart';
 import '../../features/sign_in/view/sign_in_page.dart';
 import '../../features/verify_code/view/verify_code_page.dart';
@@ -32,6 +33,10 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.completeProfile,
         builder: (context, state) => const CompleteProfilePage(),
+      ),
+      GoRoute(
+        path: AppRoutes.dashboard,
+        builder: (context, state) => const DashboardPage(),
       ),
     ],
   );

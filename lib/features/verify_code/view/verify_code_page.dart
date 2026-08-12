@@ -134,7 +134,8 @@ class _VerifyCodePageState extends State<VerifyCodePage> {
                   const SizedBox(height: 32),
                   PrimaryButton(
                     label: 'Verify',
-                    onPressed: () => context.push(AppRoutes.completeProfile),
+                    // Verified — drop the auth stack and land on the dashboard.
+                    onPressed: () => context.go(AppRoutes.dashboard),
                   ),
                 ],
               ),

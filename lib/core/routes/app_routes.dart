@@ -6,4 +6,5 @@ class AppRoutes {
   static const String signIn = '/sign-in';
   static const String verifyCode = '/verify-code';
   static const String completeProfile = '/complete-profile';
+  static const String dashboard = '/dashboard';
 }

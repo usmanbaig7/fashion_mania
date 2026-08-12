@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/routes/app_routes.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../custom_widgets/app_text_field.dart';
@@ -217,7 +218,10 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                       ),
                 ),
                 const SizedBox(height: 36),
-                PrimaryButton(label: 'Complete Profile', onPressed: () {}),
+                PrimaryButton(
+                  label: 'Complete Profile',
+                  onPressed: () => context.go(AppRoutes.dashboard),
+                ),
               ],
             ),
           ),

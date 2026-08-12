@@ -1,4 +1,5 @@
 import 'package:fashion_mania/features/complete_profile/view/complete_profile_page.dart';
+import 'package:fashion_mania/features/dashboard/view/dashboard_page.dart';
 import 'package:fashion_mania/features/onboarding/view/onboarding_page.dart';
 import 'package:fashion_mania/features/sign_in/view/sign_in_page.dart';
 import 'package:fashion_mania/features/verify_code/view/verify_code_page.dart';
@@ -11,6 +12,7 @@ void main() {
     'sign in': const SignInPage(),
     'verify code': const VerifyCodePage(email: 'example@email.com'),
     'complete profile': const CompleteProfilePage(),
+    'dashboard': const DashboardPage(),
   };
 
   pages.forEach((name, page) {
