@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../core/routes/app_routes.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../custom_widgets/banner_card.dart';
@@ -216,7 +218,10 @@ class _HomePageState extends State<HomePage> {
                           return ProductCard(
                             product: product,
                             isWishlisted: wishlist.contains(product.id),
-                            onTap: () {},
+                            onTap: () => context.push(
+                              AppRoutes.productDetail,
+                              extra: product,
+                            ),
                             onWishlistTap: () =>
                                 context.read<WishlistCubit>().toggle(product),
                           );

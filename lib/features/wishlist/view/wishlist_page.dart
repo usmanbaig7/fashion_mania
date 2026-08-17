@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../core/routes/app_routes.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../custom_widgets/product_card.dart';
@@ -47,7 +49,10 @@ class WishlistPage extends StatelessWidget {
                             return ProductCard(
                               product: product,
                               isWishlisted: true,
-                              onTap: () {},
+                              onTap: () => context.push(
+                                AppRoutes.productDetail,
+                                extra: product,
+                              ),
                               onWishlistTap: () => context
                                   .read<WishlistCubit>()
                                   .remove(product.id),

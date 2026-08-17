@@ -10,11 +10,15 @@ class PrimaryButton extends StatelessWidget {
     required this.label,
     required this.onPressed,
     this.height = 56,
+    this.icon,
   });
 
   final String label;
   final VoidCallback? onPressed;
   final double height;
+
+  /// Optional leading icon — used by the "Add to Cart" action.
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +36,16 @@ class PrimaryButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(height / 2),
           ),
         ),
-        child: Text(label, style: AppTextStyles.buttonLabel),
+        child: icon == null
+            ? Text(label, style: AppTextStyles.buttonLabel)
+            : Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(icon, size: 20, color: Colors.white),
+                  const SizedBox(width: 10),
+                  Text(label, style: AppTextStyles.buttonLabel),
+                ],
+              ),
       ),
     );
   }

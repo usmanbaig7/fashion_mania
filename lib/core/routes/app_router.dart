@@ -1,8 +1,10 @@
 import 'package:go_router/go_router.dart';
 
+import '../../data/models/product.dart';
 import '../../features/complete_profile/view/complete_profile_page.dart';
 import '../../features/dashboard/view/dashboard_page.dart';
 import '../../features/onboarding/view/onboarding_page.dart';
+import '../../features/product_detail/view/product_detail_page.dart';
 import '../../features/sign_in/view/sign_in_page.dart';
 import '../../features/verify_code/view/verify_code_page.dart';
 import 'app_routes.dart';
@@ -37,6 +39,11 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.dashboard,
         builder: (context, state) => const DashboardPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.productDetail,
+        builder: (context, state) =>
+            ProductDetailPage(product: state.extra! as Product),
       ),
     ],
   );
