@@ -8,6 +8,7 @@ import '../../../custom_widgets/category_chip.dart';
 import '../../../custom_widgets/category_circle.dart';
 import '../../../custom_widgets/product_card.dart';
 import '../../../custom_widgets/section_header.dart';
+import '../../wishlist/bloc/wishlist_cubit.dart';
 import '../bloc/home_cubit.dart';
 
 class HomePage extends StatefulWidget {
@@ -209,10 +210,17 @@ class _HomePageState extends State<HomePage> {
                           childAspectRatio: 0.66,
                         ),
                     itemBuilder: (context, index) {
-                      return ProductCard(
-                        product: state.products[index],
-                        onTap: () {},
-                        onWishlistTap: () {},
+                      final product = state.products[index];
+                      return BlocBuilder<WishlistCubit, WishlistState>(
+                        builder: (context, wishlist) {
+                          return ProductCard(
+                            product: product,
+                            isWishlisted: wishlist.contains(product.id),
+                            onTap: () {},
+                            onWishlistTap: () =>
+                                context.read<WishlistCubit>().toggle(product),
+                          );
+                        },
                       );
                     },
                   ),

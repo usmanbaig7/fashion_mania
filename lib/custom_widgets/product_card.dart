@@ -5,8 +5,8 @@ import '../core/theme/app_text_styles.dart';
 import '../data/models/product.dart';
 import 'image_placeholder.dart';
 
-/// Grid tile for a single product. Image area stays an empty placeholder
-/// until real artwork is wired up.
+/// Grid tile for a single product. Shows the product's first image, or an
+/// empty placeholder if it doesn't have one yet.
 class ProductCard extends StatelessWidget {
   const ProductCard({
     super.key,
@@ -31,9 +31,14 @@ class ProductCard extends StatelessWidget {
           Expanded(
             child: Stack(
               children: [
-                const Positioned.fill(
+                Positioned.fill(
                   child: ImagePlaceholder(
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(16),
+                    ),
+                    imagePath: product.images.isNotEmpty
+                        ? product.images.first
+                        : null,
                   ),
                 ),
                 Positioned(

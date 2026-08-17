@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/routes/app_routes.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
+import '../../../custom_widgets/floating_box.dart';
 import '../../../custom_widgets/image_placeholder.dart';
 import '../../../custom_widgets/primary_button.dart';
 
@@ -28,24 +29,49 @@ class OnboardingPage extends StatelessWidget {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        const Expanded(
+                        Expanded(
                           flex: 47,
-                          child: ImagePlaceholder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(110),
+                          child: FloatingBox(
+                            amplitude: 10,
+                            duration: const Duration(milliseconds: 2800),
+                            child: const ImagePlaceholder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(110),
+                              ),
+                              iconSize: 44,
+                              imagePath: 'assets/images/1.jpg',
                             ),
-                            iconSize: 44,
                           ),
                         ),
                         const SizedBox(width: 14),
-                        const Expanded(
+                        Expanded(
                           flex: 43,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              Expanded(child: ImagePlaceholder(isCircle: true)),
-                              SizedBox(height: 14),
-                              Expanded(child: ImagePlaceholder(isCircle: true)),
+                              Expanded(
+                                child: FloatingBox(
+                                  amplitude: 8,
+                                  duration: const Duration(milliseconds: 2400),
+                                  delay: const Duration(milliseconds: 200),
+                                  child: const ImagePlaceholder(
+                                    isCircle: true,
+                                    imagePath: 'assets/images/2.jpg',
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 14),
+                              Expanded(
+                                child: FloatingBox(
+                                  amplitude: 8,
+                                  duration: const Duration(milliseconds: 3200),
+                                  delay: const Duration(milliseconds: 500),
+                                  child: const ImagePlaceholder(
+                                    isCircle: true,
+                                    imagePath: 'assets/images/3.jpg',
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),

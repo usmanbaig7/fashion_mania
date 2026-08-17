@@ -6,14 +6,18 @@ class Category {
     required this.name,
     required this.icon,
     required this.gender,
+    this.imagePath,
   });
 
   final String id;
   final String name;
 
-  /// Stands in for the category artwork until real assets are added.
+  /// Fallback icon, used until/unless [imagePath] is set.
   final IconData icon;
 
   /// 'boys' or 'girls'.
   final String gender;
+
+  /// Category artwork. Null falls back to [icon].
+  final String? imagePath;
 }

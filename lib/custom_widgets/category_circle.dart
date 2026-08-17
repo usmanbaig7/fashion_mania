@@ -27,11 +27,14 @@ class CategoryCircle extends StatelessWidget {
           Container(
             width: size,
             height: size,
+            clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(
               color: AppColors.surfaceSoft,
               shape: BoxShape.circle,
             ),
-            child: Icon(category.icon, size: 28, color: AppColors.primary),
+            child: category.imagePath != null
+                ? Image.asset(category.imagePath!, fit: BoxFit.cover)
+                : Icon(category.icon, size: 28, color: AppColors.primary),
           ),
           const SizedBox(height: 8),
           Text(

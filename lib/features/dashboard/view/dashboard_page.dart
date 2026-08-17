@@ -5,6 +5,8 @@ import '../../../core/theme/app_colors.dart';
 import '../../../custom_widgets/app_bottom_nav_bar.dart';
 import '../../../custom_widgets/coming_soon_view.dart';
 import '../../home/view/home_page.dart';
+import '../../wishlist/bloc/wishlist_cubit.dart';
+import '../../wishlist/view/wishlist_page.dart';
 import '../bloc/dashboard_cubit.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -12,8 +14,12 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => DashboardCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => DashboardCubit()),
+        // Shared by the home grid and the wishlist tab.
+        BlocProvider(create: (_) => WishlistCubit()),
+      ],
       child: BlocBuilder<DashboardCubit, DashboardState>(
         builder: (context, state) {
           return Scaffold(
@@ -28,10 +34,7 @@ class DashboardPage extends StatelessWidget {
                       title: 'Cart',
                       icon: Icons.shopping_bag_outlined,
                     ),
-                    ComingSoonView(
-                      title: 'Wishlist',
-                      icon: Icons.favorite_border,
-                    ),
+                    WishlistPage(),
                     ComingSoonView(
                       title: 'Categories',
                       icon: Icons.grid_view_rounded,
